@@ -17,6 +17,7 @@ public final class BlinkIdSampleApp extends Application {
         // use optimised way for transferring RecognizerBundle between activities, while ensuring
         // data does not get lost when Android restarts the scanning activity
         MicroblinkSDK.setIntentDataTransferMode(IntentDataTransferMode.PERSISTED_OPTIMISED);
+        com.microblink.util.Log.setLogLevel(com.microblink.util.Log.LogLevel.LOG_VERBOSE);
     }
 
 }
