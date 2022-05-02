@@ -6,12 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.microblink.entities.recognizers.RecognizerBundle;
 import com.microblink.entities.recognizers.blinkid.generic.BlinkIdCombinedRecognizer;
 import com.microblink.uisettings.ActivityRunner;
 import com.microblink.uisettings.BlinkIdUISettings;
-
-import androidx.appcompat.app.AppCompatActivity;
+import com.microblink.uisettings.CameraSettings;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     public void onScanButtonClick(View view) {
         // use default UI for scanning documents
         BlinkIdUISettings uiSettings = new BlinkIdUISettings(recognizerBundle);
+        CameraSettings cs = new CameraSettings.Builder().setForceLegacyApi(true).build();
+        uiSettings.setCameraSettings(cs);
 
         // start scan activity based on UI settings
         ActivityRunner.startActivityForResult(this, MY_BLINKID_REQUEST_CODE, uiSettings);
